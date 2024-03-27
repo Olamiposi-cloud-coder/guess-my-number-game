@@ -18,19 +18,25 @@ btn.addEventListener('click', () => {
     message.textContent = '⛔⛔No number provided!!!';
   } else if (guess === secretNumber) {
     message.textContent = '📌📌Correct Number!!!';
-    scoreOutput += 1;
+    scoreOutput++;
     score.textContent = scoreOutput;
   } else if (guess > secretNumber) {
     if (scoreOutput > 1) {
       message.textContent = '😞😞Number Too High ';
-      scoreOutput -= 1;
+      scoreOutput--;
       score.textContent = scoreOutput;
     } else {
       message.textContent = 'You lost the game😞😞';
+      score.textContent = 0;
     }
   } else if (guess < secretNumber) {
-    message.textContent = '😞😞Number Too Low ';
-    scoreOutput -= 1;
-    score.textContent = scoreOutput;
+    if (scoreOutput > 1) {
+      message.textContent = '😞😞Number Too Low ';
+      scoreOutput--;
+      score.textContent = scoreOutput;
+    } else {
+      message.textContent = 'You lost the game😞😞';
+      score.textContent = 0;
+    }
   }
 });
