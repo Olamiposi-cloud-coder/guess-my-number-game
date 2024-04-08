@@ -1,7 +1,5 @@
 'use strict';
 
-let secretNumber = Math.trunc(Math.random() * 20) + 1;
-
 const number = document.querySelector('.number');
 const message = document.querySelector('.message');
 const guessInput = document.querySelector('.guess');
@@ -13,6 +11,7 @@ const highScore = document.querySelector('.highscore');
 
 let scoreOutput = 20;
 let highScoreOutput = 0;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 const displayMessage = function (text) {
   message.textContent = text;
@@ -20,9 +19,6 @@ const displayMessage = function (text) {
 
 btn.addEventListener('click', () => {
   const guess = Number(guessInput.value);
-
-  console.log(guess, typeof guess);
-
   if (!guess) {
     displayMessage('⛔⛔No number provided!!!');
   } else if (guess === secretNumber) {
@@ -30,7 +26,6 @@ btn.addEventListener('click', () => {
     scoreOutput++;
     score.textContent = scoreOutput;
     number.textContent = secretNumber;
-
     body.style.backgroundColor = '#60b347';
     number.style.width = '30rem';
 
